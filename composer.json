@@ -1,0 +1,19 @@
+{
+    "name": "lemax10/gates",
+    "type": "october-plugin",
+    "description": "Laravel gates plugin",
+    "homepage": "",
+    "keywords": ["october", "octobercms", "gates"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vladimir Pyankov",
+            "email": "rdlrobot@gmail.com",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "~1.0"
+    }
+}

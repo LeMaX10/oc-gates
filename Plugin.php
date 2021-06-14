@@ -6,6 +6,7 @@ namespace LeMaX10\Gates;
 use Auth;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Support\Facades\Gate;
+use System\Classes\PluginBase;
 
 /**
  * Gates Plugin Information File.

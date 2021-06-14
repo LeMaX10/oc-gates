@@ -5,7 +5,6 @@ namespace LeMaX10\Gates;
 
 use Auth;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
-use Illuminate\Support\Facades\Gate;
 use System\Classes\PluginBase;
 
 /**
@@ -21,8 +20,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'lemax10.gates::lang.plugin.name',
-            'description' => 'lemax10.gates::lang.plugin.description',
+            'name' => 'Gates Policy',
+            'description' => 'Support Laravel Gates Policies',
             'author' => 'Vladimir Pyankov (aka lemax10)',
         ];
     }
@@ -30,11 +29,6 @@ class Plugin extends PluginBase
     public function register()
     {
         $this->registerRequestAndGatesResolvers();
-    }
-
-    public function boot()
-    {
-        $this->registerPolicies();
     }
 
     private function registerRequestAndGatesResolvers(): void
@@ -49,15 +43,5 @@ class Plugin extends PluginBase
                 $this->app['request']->getUserResolver()
             );
         });
-    }
-
-    /**
-     * Register gate policies.
-     */
-    private function registerPolicies(): void
-    {
-        foreach ($this->policies as $modelNamespace => $policyNamespace) {
-            Gate::policy($modelNamespace, $policyNamespace);
-        }
     }
 }

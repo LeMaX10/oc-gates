@@ -1,10 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LeMaX10\Gates;
 
 use Auth;
+use BackendAuth;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use October\Rain\Auth\Models\User;
 use System\Classes\PluginBase;
 
 /**
@@ -33,7 +36,11 @@ class Plugin extends PluginBase
 
     private function registerRequestAndGatesResolvers(): void
     {
-        $this->app['request']->setUserResolver(function () {
+        $this->app['request']->setUserResolver(static function (): ?User {
+            if (\App::runningInBackend()) {
+                return BackendAuth::user();
+            }
+
             return Auth::user();
         });
 
